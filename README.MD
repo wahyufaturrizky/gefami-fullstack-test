@@ -1,29 +1,32 @@
-1. JSON Array Object
+# 1. JSON Array Object
 
+```
 [
-{
-"id": 1,
-"name": "John Doe",
-"email": "john@example.com"
-},
-{
-"id": 2,
-"name": "Jane Smith",
-"email": "jane@example.com"
-}
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@example.com"
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "email": "jane@example.com"
+  }
 ]
+```
 
-2. C# Code to Display and Update a Label
+# 2. C# Code to Display and Update a Label
 
+```
 using System;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 
 public class MainForm : Form
 {
-private Label label;
-private Button button;
-private JArray jsonArray;
+    private Label label;
+    private Button button;
+    private JArray jsonArray;
 
     public MainForm()
     {
@@ -48,30 +51,35 @@ private JArray jsonArray;
     {
         Application.Run(new MainForm());
     }
-
 }
 
-3. HTTP Request and Response Logging
+```
 
+# 3. HTTP Request and Response Logging
+
+```
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 public class Program
 {
-public static async Task Main(string[] args)
-{
-using (HttpClient client = new HttpClient())
-{
-HttpResponseMessage response = await client.GetAsync("http://jsonplaceholder.typicode.com/posts");
-string responseBody = await response.Content.ReadAsStringAsync();
-Console.WriteLine(responseBody);
-}
-}
+    public static async Task Main(string[] args)
+    {
+        using (HttpClient client = new HttpClient())
+        {
+            HttpResponseMessage response = await client.GetAsync("http://jsonplaceholder.typicode.com/posts");
+            string responseBody = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(responseBody);
+        }
+    }
 }
 
-4. HTML to Display Response in a Table
+```
 
+# 4. HTML to Display Response in a Table
+
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -105,8 +113,11 @@ Console.WriteLine(responseBody);
 </body>
 </html>
 
-5. Function to Delete a Row in the Table
+```
 
+# 5. Function to Delete a Row in the Table
+
+```
 <script>
     function deleteRow(id) {
         const table = document.getElementById('responseTable').getElementsByTagName('tbody')[0];
@@ -119,31 +130,37 @@ Console.WriteLine(responseBody);
     }
 </script>
 
-6. Remove a Key from JSON Response
+```
 
+# 6. Remove a Key from JSON Response
+
+```
 fetch('http://jsonplaceholder.typicode.com/posts')
-.then(response => response.json())
-.then(data => {
-data.forEach(item => {
-delete item.userId; // Remove the userId key
-});
-console.log(data); // Log the modified data
-});
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(item => {
+            delete item.userId;  // Remove the userId key
+        });
+        console.log(data);  // Log the modified data
+    });
 
-7. SHA-256 Hashing Function
+```
 
+# 7. SHA-256 Hashing Function
+
+```
 using System;
 using System.Security.Cryptography;
 using System.Text;
 
 public class Program
 {
-public static void Main(string[] args)
-{
-string input = "01112018kenpriaifabula";
-string hash = ComputeSha256Hash(input);
-Console.WriteLine(hash);
-}
+    public static void Main(string[] args)
+    {
+        string input = "01112018kenpriaifabula";
+        string hash = ComputeSha256Hash(input);
+        Console.WriteLine(hash);
+    }
 
     public static string ComputeSha256Hash(string rawData)
     {
@@ -158,11 +175,13 @@ Console.WriteLine(hash);
             return builder.ToString();
         }
     }
-
 }
 
-8. Debugging HTML
+```
 
+# 8. Debugging HTML
+
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -177,12 +196,14 @@ Console.WriteLine(hash);
             document.getElementById("demo").innerHTML = "Hello World!";
         }
     </script>
-
 </body>
 </html>
 
-9. Login Page with Local Storage
+```
 
+# 9. Login Page with Local Storage
+
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -213,7 +234,6 @@ Console.WriteLine(hash);
             }
         }
     </script>
-
 </head>
 <body>
     <div id="loginForm">
@@ -228,47 +248,55 @@ Console.WriteLine(hash);
 </body>
 </html>
 
-10. Node.js Project with Express
+```
 
+# 10. Node.js Project with Express
+
+```
 const express = require('express');
 const app = express();
 app.use(express.json());
 
 app.get('/api/data', (req, res) => {
-res.json({ message: 'GET request received' });
+    res.json({ message: 'GET request received' });
 });
 
 app.post('/api/data', (req, res) => {
-res.json({ message: 'POST request received', data: req.body });
+    res.json({ message: 'POST request received', data: req.body });
 });
 
 app.listen(3000, () => {
-console.log('Server is running on port 3000');
+    console.log('Server is running on port 3000');
 });
 
-11. Add Headers and Validation in Express API
+```
 
+# 11. Add Headers and Validation in Express API
+
+```
 const express = require('express');
 const app = express();
 app.use(express.json());
 
 app.use((req, res, next) => {
-const userId = req.header('User-id');
-const scope = req.header('Scope');
-if (userId !== 'ifabula' || scope !== 'user') {
-return res.status(401).json({ responseCode: 401, responseMessage: 'UNAUTHORIZED' });
-}
-next();
+    const userId = req.header('User-id');
+    const scope = req.header('Scope');
+    if (userId !== 'ifabula' || scope !== 'user') {
+        return res.status(401).json({ responseCode: 401, responseMessage: 'UNAUTHORIZED' });
+    }
+    next();
 });
 
 app.get('/api/data', (req, res) => {
-res.json({ message: 'GET request received' });
+    res.json({ message: 'GET request received' });
 });
 
 app.post('/api/data', (req, res) => {
-res.json({ message: 'POST request received', data: req.body });
+    res.json({ message: 'POST request received', data: req.body });
 });
 
 app.listen(3000, () => {
-console.log('Server is running on port 3000');
+    console.log('Server is running on port 3000');
 });
+
+```
